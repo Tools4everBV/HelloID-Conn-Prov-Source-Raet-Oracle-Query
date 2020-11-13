@@ -57,60 +57,58 @@ function Get-OracleDBData
 try{
     # Get Person data
     $OracleQuery = "SELECT 
-	        tpersoon.pers_nr,
-			tpersoon.e_titul, 
-			tpersoon.e_titul_na, 
-			tpersoon.e_vrlt, 
-			tpersoon.e_roepnaam, 
-			tpersoon.e_voornmn, 
-			tpersoon.e_vrvg, 
-			tpersoon.e_naam, 
-			tpersoon.p_vrvg, 
-			tpersoon.p_naam,
-			tpersoon.vrvg_samen, 
-			tpersoon.naam_samen, 
-			tpersoon.gbrk_naam, 
-			tpersoon.tssnvgsl_kd, 
-			tpersoon.geslacht,
-			tpersoon.mobiel_tel_nr, 
-			tpersoon.werk_tel_nr, 
-			tpersoon.email_werk
-        FROM 
-            dpib010 tpersoon, dpic300 tcontract, dpic351 tfunctie, dpib015 tafdeling
-            WHERE tpersoon.pers_nr = tcontract.pers_nr
-            and tcontract.primfunc_kd = tfunctie.func_kd
-            and tcontract.oe_hier_sl = tafdeling.dpib015_sl
-            ORDER BY tpersoon.pers_nr,dv_vlgnr desc
+	    tpersoon.pers_nr,
+	    tpersoon.e_titul, 
+	    tpersoon.e_titul_na, 
+	    tpersoon.e_vrlt, 
+	    tpersoon.e_roepnaam, 
+	    tpersoon.e_voornmn, 
+	    tpersoon.e_vrvg, 
+	    tpersoon.e_naam, 
+	    tpersoon.p_vrvg, 
+	    tpersoon.p_naam,
+	    tpersoon.vrvg_samen, 
+	    tpersoon.naam_samen, 
+	    tpersoon.gbrk_naam, 
+	    tpersoon.tssnvgsl_kd, 
+	    tpersoon.geslacht,
+	    tpersoon.mobiel_tel_nr, 
+	    tpersoon.werk_tel_nr, 
+	    tpersoon.email_werk
+	FROM dpib010 tpersoon, dpic300 tcontract, dpic351 tfunctie, dpib015 tafdeling
+	WHERE tpersoon.pers_nr = tcontract.pers_nr
+	    AND tcontract.primfunc_kd = tfunctie.func_kd
+	    AND tcontract.oe_hier_sl = tafdeling.dpib015_sl
+	ORDER BY tpersoon.pers_nr,dv_vlgnr desc
     "
 
     $persons = New-Object System.Collections.ArrayList
     Get-OracleDBData -OracleConnectionString $OracleConnectionString -OracleQuery $OracleQuery -Data ([ref]$persons)
 
     # Get Contract data
-    $OracleQuery = "SELECT 
-	        tcontract.pers_nr,
-			tcontract.dv_vlgnr,
-			tcontract.opdrgvr_nr,
-            tcontract.oe_hier_sl AS afdeling,
-            tcontract.uren_pw,
-            tcontract.deelb_perc,            
-			tcontract.indnst_dt,  
-			tcontract.uitdnst_dt,
-			tcontract.arelsrt_kd,
-            tcontract.opdrgvr_nr,
-            tcontract.object_id,
-			tafdeling.kstpl_kd,
-			tafdeling.kstdrg_kd,
-            tafdeling.oe_kort_nm,
-            tafdeling.oe_vol_nm,
-            tafdeling.oe_hoger_n,
-			tfunctie.func_kd,
-            tfunctie.func_oms,
-            tfunctie.funtyp_kd
-        FROM 
-            dpic300 tcontract
-        LEFT JOIN dpib015 tafdeling ON tcontract.oe_hier_sl = tafdeling.dpib015_sl 
-        LEFT JOIN dpic351 tfunctie ON tcontract.primfunc_kd = tfunctie.func_kd
+    $OracleQuery = "SELECT
+	    tcontract.pers_nr,
+	    tcontract.dv_vlgnr,
+	    tcontract.opdrgvr_nr,
+	    tcontract.oe_hier_sl AS afdeling,
+	    tcontract.uren_pw,
+	    tcontract.deelb_perc,
+	    tcontract.indnst_dt,  
+	    tcontract.uitdnst_dt,
+	    tcontract.arelsrt_kd,
+	    tcontract.opdrgvr_nr,
+	    tcontract.object_id,
+	    tafdeling.kstpl_kd,
+	    tafdeling.kstdrg_kd,
+	    tafdeling.oe_kort_nm,
+	    tafdeling.oe_vol_nm,
+	    tafdeling.oe_hoger_n,
+	    tfunctie.func_kd,
+	    tfunctie.func_oms,
+	    tfunctie.funtyp_kd
+	FROM dpic300 tcontract
+	LEFT JOIN dpib015 tafdeling ON tcontract.oe_hier_sl = tafdeling.dpib015_sl 
+	LEFT JOIN dpic351 tfunctie ON tcontract.primfunc_kd = tfunctie.func_kd
     "
     $employments = New-Object System.Collections.ArrayList
     Get-OracleDBData -OracleConnectionString $OracleConnectionString -OracleQuery $OracleQuery -Data ([ref]$employments)
