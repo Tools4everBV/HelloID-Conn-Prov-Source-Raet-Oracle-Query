@@ -1,5 +1,6 @@
 # HelloID-Conn-Prov-Source-Raet-Oracle-Query
-This is the first version of the HelloID provisioning source connector for Raet On-Premises based on Oracle DB queries
+HelloID provisioning source connector for Raet On-Premises based on Oracle DB queries.
+Please remember This is the first version of this connector. Any feedback will be appreciated!
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -10,7 +11,6 @@ This is the first version of the HelloID provisioning source connector for Raet 
   * [Mappings](#mappings)
   * [Scope](#scope)
 * [Setup the PowerShell connector](#setup-the-powershell-connector)
-
 
 ## Introduction
 The interface to communicate with Beaufort On-Premises is through a set of Oracle or SQL DB queries.
