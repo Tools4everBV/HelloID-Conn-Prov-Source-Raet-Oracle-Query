@@ -22,7 +22,7 @@ For this connector we use the Oracle database and queries.
 
 By using this connector you will have the ability to retrieve employee and contract data from the HR Core Pulic On-Premises (previously known as Beaufort) HR system.
 
-Connecting to Profit is done using the full Oracle DB client. 
+Connecting to Raet is done using the full Oracle DB client. 
 Please see the following page from the Oracle Docs for more information.
 
 [Oracle Database Client Installation Guide](https://docs.oracle.com/cd/E11882_01/install.112/e47959/install.htm#NTCLI1280)
