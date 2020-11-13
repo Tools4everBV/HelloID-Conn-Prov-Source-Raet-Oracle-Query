@@ -57,18 +57,18 @@ function Get-OracleDBData
 try{
     # Get Department data
     $OracleQuery = "SELECT 
-            CAST(ou.dpib015_sl AS int) AS afdeling,
-            ou.orgeenh_kd,
-            ou.oe_kort_nm,
-            ou.oe_vol_nm,
-            CAST(ou.oe_hoger_n AS int) AS oe_hoger_n,
-            CAST(m.pers_nr AS int) as pers_nr,
-            m.rol_oe_kd
-        FROM dpib015 ou
-            LEFT JOIN dpib025 m ON m.dpib015_sl = ou.dpib015_sl
-                AND m.rol_oe_kd = 'MGR'
-                AND m.ingang_dt < CURRENT_TIMESTAMP
-                AND (m.eind_dt IS NULL OR m.eind_dt > CURRENT_TIMESTAMP)
+        CAST(ou.dpib015_sl AS int) AS afdeling,
+        ou.orgeenh_kd,
+        ou.oe_kort_nm,
+        ou.oe_vol_nm,
+        CAST(ou.oe_hoger_n AS int) AS oe_hoger_n,
+        CAST(m.pers_nr AS int) as pers_nr,
+        m.rol_oe_kd
+    FROM dpib015 ou
+    LEFT JOIN dpib025 m ON m.dpib015_sl = ou.dpib015_sl
+        AND m.rol_oe_kd = 'MGR'
+        AND m.ingang_dt < CURRENT_TIMESTAMP
+        AND (m.eind_dt IS NULL OR m.eind_dt > CURRENT_TIMESTAMP)
     "
 
     $departments = New-Object System.Collections.ArrayList
