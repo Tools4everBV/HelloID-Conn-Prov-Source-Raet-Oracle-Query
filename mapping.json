@@ -1,0 +1,278 @@
+{
+    "personMappings": [
+        {
+            "name": "Contact.Business.Email",
+            "mode": "field",
+            "value": "EMAIL_WERK",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Phone.Fixed",
+            "mode": "field",
+            "value": "WERK_TEL_NR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Contact.Business.Phone.Mobile",
+            "mode": "field",
+            "value": "MOBIEL_TEL_NR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Gender",
+            "mode": "field",
+            "value": "GESLACHT",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "ExternalId",
+            "mode": "field",
+            "value": "ExternalId",
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "Name.Convention",
+            "mode": "field",
+            "value": "GBRK_NAAM",
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "Name.FamilyName",
+            "mode": "field",
+            "value": "E_NAAM",
+            "validation": {
+                "required": true
+            }
+        },
+        {
+            "name": "Name.FamilyNamePartner",
+            "mode": "field",
+            "value": "P_NAAM",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.FamilyNamePartnerPrefix",
+            "mode": "field",
+            "value": "P_VRVG",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.FamilyNamePrefix",
+            "mode": "field",
+            "value": "E_VRVG",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.GivenName",
+            "mode": "field",
+            "value": "E_VOORNMN",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.Initials",
+            "mode": "field",
+            "value": "E_VRLT",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Name.NickName",
+            "mode": "field",
+            "value": "E_ROEPNAAM",
+            "validation": {
+                "required": true
+            }
+        }
+    ],
+    "contractMappings": [
+        {
+            "name": "CostBearer.Code",
+            "mode": "field",
+            "value": "KSTDRG_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "CostBearer.ExternalId",
+            "mode": "field",
+            "value": "KSTDRG_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "CostBearer.Name",
+            "mode": "field",
+            "value": "KSTDRG_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "CostCenter.Code",
+            "mode": "field",
+            "value": "KSTPL_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "CostCenter.ExternalId",
+            "mode": "field",
+            "value": "KSTPL_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "CostCenter.Name",
+            "mode": "field",
+            "value": "KSTPL_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Department.DisplayName",
+            "mode": "field",
+            "value": "OE_VOL_NM",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Department.ExternalId",
+            "mode": "field",
+            "value": "AFDELING",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Fte",
+            "mode": "complex",
+            "value": "function getValue(){\r\n    let fte = (sourceContract.DEELB_PERC / 100);\r\n    fte = fte.toFixed(2);\r\n    return fte;\r\n}\r\n\r\ngetValue()",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.HoursPerWeek",
+            "mode": "field",
+            "value": "UREN_PW",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Percentage",
+            "mode": "field",
+            "value": "DEELB_PERC",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Details.Sequence",
+            "mode": "field",
+            "value": "DV_VLGNR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Employer.Code",
+            "mode": "field",
+            "value": "OPDRGVR_NR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Employer.ExternalId",
+            "mode": "field",
+            "value": "OPDRGVR_NR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Employer.Name",
+            "mode": "field",
+            "value": "OPDRGVR_NR",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "EndDate",
+            "mode": "field",
+            "value": "UITDNST_DT",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "ExternalId",
+            "mode": "field",
+            "value": "OBJECT_ID",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "StartDate",
+            "mode": "field",
+            "value": "INDNST_DT",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.Code",
+            "mode": "field",
+            "value": "FUNC_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.ExternalId",
+            "mode": "field",
+            "value": "FUNC_KD",
+            "validation": {
+                "required": false
+            }
+        },
+        {
+            "name": "Title.Name",
+            "mode": "field",
+            "value": "FUNC_OMS",
+            "validation": {
+                "required": false
+            }
+        }
+    ]
+}
