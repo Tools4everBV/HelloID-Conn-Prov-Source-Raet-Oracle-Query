@@ -120,39 +120,45 @@ try{
     $persons | Add-Member -MemberType NoteProperty -Name "ExternalId" -Value $null -Force
     $persons | Add-Member -MemberType NoteProperty -Name "DisplayName" -Value $null -Force
     $persons | Add-Member -MemberType NoteProperty -Name "Contracts" -Value $null -Force
-
+    # Map required fields
     $persons | ForEach-Object {
-        # Map required fields
         $_.ExternalId = $_.PERS_NR
         $_.DisplayName = $_.PERS_NR
-
-        # Add Contracts to person object
-        if(-not([string]::IsNullOrEmpty($_.PERS_NR))){
-            $contracts = $employments[$_.PERS_NR]
-            if ( -not($null -eq $contracts) ){
-                $_.Contracts = $contracts
-            }
-        }
-
-        if ($_.GBRK_NAAM -eq "E") {
-            $_.GBRK_NAAM = "B"
-        }
-        if ($_.GBRK_NAAM -eq "P") {
-            $_.GBRK_NAAM = "P"
-        }
-        if ($_.GBRK_NAAM -eq "C") {
-            $_.GBRK_NAAM = "BP"
-        }
-        if ($_.GBRK_NAAM -eq "B") {
-            $_.GBRK_NAAM = "PB"
-        }
     }
 
     # Make sure persons are unique
     $persons = $persons | Sort-Object ExternalId -Unique
 
-    # Export and sanitize the persons in json format
+    # Enhance person object
     foreach($person in $persons){
+        # Add Contracts to person object
+        if(-not([string]::IsNullOrEmpty($person.PERS_NR))){
+            $contracts = $employments[$person.PERS_NR]
+            if ( -not($null -eq $contracts) ){
+                $person.Contracts = $contracts
+            }
+        }
+
+	# Convert naming convention codes to standard
+        Switch($person.GBRK_NAAM ){
+            "E" {
+                $person.GBRK_NAAM = "B"
+            }
+            "P" {
+                $person.GBRK_NAAM = "P"
+            }
+            "C" {
+                $person.GBRK_NAAM = "BP"
+            }
+            "B" {
+                $person.GBRK_NAAM = "PB"
+            }
+            "D" {
+                $person.GBRK_NAAM = "BP"
+            }
+        }
+
+        # Export and sanitize the persons in json format
         $json = $person | ConvertTo-Json -Depth 10
         $json = $json.Replace("._", "__")
         Write-Output $json
