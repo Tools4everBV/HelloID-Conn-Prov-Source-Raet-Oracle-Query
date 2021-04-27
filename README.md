@@ -50,3 +50,6 @@ The queries can be changed by the customer itself to meet their requirements.
 ![image](./assets/config.png)
 
 _For more information about our HelloID PowerShell connectors, please refer to our general [Documentation](https://docs.helloid.com/hc/en-us/articles/360012557600-Configure-a-custom-PowerShell-source-system) page_
+
+# HelloID Docs
+The official HelloID documentation can be found at: https://docs.helloid.com/
